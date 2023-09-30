@@ -19,3 +19,14 @@ def test_steck():
     assert stack.top.next_node.data == 'two'
     assert stack.top.next_node.next_node.data == 'one'
     assert stack.top.next_node.next_node.next_node is None
+
+
+def test_pop():
+    stack = Stack()
+    stack.push('one')
+    stack.push('two')
+    data = stack.pop()
+    assert stack.top.data == 'one'
+    data = stack.pop()
+    assert data == 'one'
+    assert stack.top is None
