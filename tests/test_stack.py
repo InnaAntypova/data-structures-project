@@ -30,3 +30,10 @@ def test_pop():
     data = stack.pop()
     assert data == 'one'
     assert stack.top is None
+
+
+def test_str():
+    stack = Stack()
+    stack.push('one')
+    stack.push('two')
+    assert str(stack) == 'Stack: one, two'
