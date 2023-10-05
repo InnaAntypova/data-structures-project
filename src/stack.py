@@ -19,6 +19,14 @@ class Stack:
         self.top = None
         self.stack = []
 
+    def __str__(self):
+        """ Метод выводит пользователю данные из стека"""
+        all_stack = []
+        for i in self.stack:
+            all_stack.append(i.data)
+
+        return f"Stack: {', '.join(all_stack)}"
+
     def push(self, data: str):
         """
         Метод для добавления элемента на вершину стека
