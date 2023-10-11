@@ -16,14 +16,15 @@ class Queue:
 
     def __init__(self):
         """Конструктор класса Queue"""
-        self.queue = []
+        #self.queue = []
         self.tail = None  # конец очереди
         self.head = None  # начало очереди
 
     def __str__(self):
         """ Метод выводит пользователю данные очереди"""
-        return '\n'.join(self.queue)
-        #return f"Queue: {'/n'.join(self.queue)}"
+        if self.head is None:
+            return ""
+        return f"{self.head.data}\n{self.head.next_node.data}\n{self.tail.data}"
 
     def enqueue(self, data):
         """
@@ -31,15 +32,13 @@ class Queue:
 
         :param data: данные, которые будут добавлены в очередь
         """
-        node = Node(data, None)
-        if len(self.queue) == 0:
-            self.head = node
-            self.tail = node
-            self.queue.append(data)
-        else:
-            self.tail.next_node = node
-            self.tail = node
-            self.queue.append(data)
+        if self.tail is None and self.head is None:
+            self.tail = self.head = Node(data, None)
+            return
+
+        self.tail.next_node = Node(data, None)
+        self.tail = self.tail.next_node
+        return
 
 
     def dequeue(self):
