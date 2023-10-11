@@ -1,4 +1,6 @@
 """Здесь надо написать тесты с использованием unittest для модуля queue."""
+import pytest
+
 from src.queue import Queue, Node
 
 
@@ -31,3 +33,14 @@ def test_str():
 
     assert str(queue) == "one\ntwo\nthree"
 
+
+def test_dequeue():
+    queue = Queue()
+    queue.enqueue('one')
+    queue.enqueue('two')
+    queue.enqueue('three')
+
+    assert queue.dequeue() == 'one'
+    assert queue.dequeue() == 'two'
+    assert queue.dequeue() == 'three'
+    assert queue.dequeue() is None
