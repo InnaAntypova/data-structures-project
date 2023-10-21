@@ -64,18 +64,16 @@ class LinkedList:
 
     def get_data_by_id(self, key_id):
         """ Возвращает первый найденный словарь с ключом 'id' """
-        temp_data = LinkedList.to_list(self)
 
-        for temp in temp_data:
+        node = self.head
+
+        while node:
             try:
-                if int(key_id) == int(temp['id']):
-                    return temp
-
-                if temp != dict:
-                    raise TypeError
-
+                if node.data['id'] == key_id:
+                    return node.data
             except TypeError:
                 print("Данные не являются словарем или в словаре нет id.")
+            finally:
+                node = node.next_node
 
-            continue
 
